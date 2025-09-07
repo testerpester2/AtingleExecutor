@@ -15,7 +15,7 @@
 // #include <limits.h>
 // #include <fcntl.h>
 #include <pthread.h>
-#include <glib/glib/glib.h>
+#include <glib.h>
 
 static GtkWidget *main_window;
 static GtkWidget *editor;
@@ -85,7 +85,7 @@ static void on_clear_clicked(GtkButton *button, gpointer user_data) {
 }
 
 static void open_file_response(GObject *source_object, GAsyncResult *res, gpointer user_data) {
-    GtkFileDialog *dialog = GTK_FILE_DIALOG(source_object);
+    GtkNativeDialog *dialog = GTK_FILE_DIALOG(source_object);
     GFile *file = gtk_file_dialog_open_finish(dialog, res, NULL);
     if (file) {
         char *filename = g_file_get_path(file);
@@ -103,13 +103,13 @@ static void open_file_response(GObject *source_object, GAsyncResult *res, gpoint
 }
 
 static void on_open_file_clicked(GtkButton *button, gpointer user_data) {
-    GtkFileDialog *dialog = gtk_file_dialog_new();
+    GtkNativeDialog *dialog = gtk_file_dialog_new();
     gtk_file_dialog_set_title(dialog, "Open Script");
     gtk_file_dialog_open(dialog, GTK_WINDOW(main_window), NULL, open_file_response, NULL);
 }
 
 static void save_file_response(GObject *source_object, GAsyncResult *res, gpointer user_data) {
-    GtkFileDialog *dialog = GTK_FILE_DIALOG(source_object);
+    GtkNativeDialog *dialog = GTK_FILE_DIALOG(source_object);
     GFile *file = gtk_file_dialog_save_finish(dialog, res, NULL);
     if (file) {
         char *filename = g_file_get_path(file);
@@ -132,7 +132,7 @@ static void save_file_response(GObject *source_object, GAsyncResult *res, gpoint
 }
 
 static void on_save_file_clicked(GtkButton *button, gpointer user_data) {
-    GtkFileDialog *dialog = gtk_file_dialog_new();
+    GtkNativeDialog *dialog = gtk_file_dialog_new();
     gtk_file_dialog_set_title(dialog, "Save Script");
     gtk_file_dialog_save(dialog, GTK_WINDOW(main_window), NULL, save_file_response, NULL);
 }
