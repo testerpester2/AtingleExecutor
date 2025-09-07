@@ -1,0 +1,6 @@
+[submodule "glib"]
+	path = glib
+	url = https://gitlab.gnome.org/GNOME/glib/
+[submodule "gtk"]
+	path = gtk
+	url = https://gitlab.gnome.org/GNOME/gtk/
