@@ -15,7 +15,7 @@
 // #include <limits.h>
 // #include <fcntl.h>
 #include <pthread.h>
-#include <glib.h>
+#include <glib/glib/glib.h>
 
 static GtkWidget *main_window;
 static GtkWidget *editor;
